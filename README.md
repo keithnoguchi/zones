@@ -1,23 +1,26 @@
 # zones
 
-[Learning CoreDNS] example files
+Let's play with [CoreDNS] demonstrated in in [Learning CoreDNS].
 
+[coredns]: https://github.com/coredns/coredns
 [learning coredns]: https://www.oreilly.com/library/view/learning-coredns/9781492047957/
 
 ## Example
 
-Run coredns with the provided [coredns.conf] file:
+Run coredns with some sample configuration files,
+e.g. [primary.conf], [secondary.conf].
 
-[coredns.conf]: coredns.conf
+[primary.conf]: conf/primary.conf
+[secondary.conf]: conf/secondary.conf
 
 ```sh
 $ git clone https://github.com/keithnoguchi/zones
 $ cd zones
-$ coredns -conf coredns.conf
+$ coredns -conf conf/primary.conf
 ```
 
-Retrieve the [foo.example] zone info through the coredns
-running on port 1053 ss in [coredns.conf]:
+Retrieve the [foo.example] zone info through the coredns running
+on port 1053 as in the [primary.conf] configuration file:
 
 [foo.example]: db.foo.example
 
