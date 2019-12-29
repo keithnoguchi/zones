@@ -1,6 +1,6 @@
 # zones
 
-Let's play with [CoreDNS] demonstrated in in [Learning CoreDNS].
+A [CoreDNS] play ground as demonstrated in [Learning CoreDNS].
 
 [coredns]: https://github.com/coredns/coredns
 [learning coredns]: https://www.oreilly.com/library/view/learning-coredns/9781492047957/
@@ -8,11 +8,12 @@ Let's play with [CoreDNS] demonstrated in in [Learning CoreDNS].
 ## Example
 
 Run coredns with some sample configuration files,
-e.g. [primary.conf], [secondary.conf] and [forwarder.conf].
+e.g. [primary.conf], [secondary.conf], [forwarder.conf] and [services.conf].
 
 [primary.conf]: conf/primary.conf
 [secondary.conf]: conf/secondary.conf
 [forwarder.conf]: conf/forwarder.conf
+[services.conf]: conf/services.conf
 
 ```sh
 $ git clone https://github.com/keithnoguchi/zones
@@ -128,6 +129,16 @@ ns2.foo.example.
 0 0 80 foo.example.
 0 0 443 foo.example.
 216.58.194.174
+
+etcd-test
+
+/skydns/local/services/users
+{"host": "192.0.2.10", "port": 20020, "priority": 10, "weight": 20}
+
+services-test
+
+192.0.2.10
+10 100 20020 users.services.local.
 ```
 
 Happy Hacking!
