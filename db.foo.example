@@ -1,0 +1,24 @@
+; SPDX-License-Identifier: GPL-2.0
+@	3600	IN	SOA	ns1.foo.example.	root.foo.example. 	(
+	2019122801	; serial number
+	1h		; refresh interval
+	15m		; retry interval
+	7d		; expiration interval
+	10m		; negative-caching TTL
+)
+
+		IN	NS	ns1.foo.example.
+		IN	NS	ns2.foo.example.
+		IN	MX	0 mail.foo.example.
+		IN	A	192.168.1.1
+		IN	AAAA	2001:db8:42:1::1
+
+www	5m	IN	CNAME	@
+ns1		IN	A	192.168.1.53
+		IN	AAAA	2001:db8:42:1::53
+ns2		IN	A	192.168.2.53
+		IN	AAAA	2001:db8:42:2::53
+mail		IN	A	192.168.1.25
+		IN	AAAA	2001:db8:42:1::25
+_http._tcp.www	IN	SRV	0 0 80 foo.example.
+_https._tcp.www	IN	SRV	0 0 443 foo.example.
