@@ -6,7 +6,7 @@ all: clean run test
 run:
 	@coredns -conf coredns.conf > $(LOG) &
 test:
-	@for t in $(TESTS); do printf "\n%s\n\n" $${t} && dig -f $${t}; done
+	@for t in tests/$(TESTS); do printf "\n%s\n\n" $${t} && dig -f $${t}; done
 watch:
 	@tail -f $(LOG)
 clean:
