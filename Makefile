@@ -1,14 +1,14 @@
 # SPDX-License-Identifier: GPL-2.0
-LOG	:= coredns.log
-TESTS	:= foo.example.test.dig
-.PHONY: all run test
-all: clean run test
-run:
-	@coredns -conf coredns.conf > $(LOG) &
-test:
-	@for t in tests/$(TESTS); do printf "\n%s\n\n" $${t} && dig -f $${t}; done
+.PHONY: all test watch clean
+all: clean primary secondary test
+%:
+	@-mkdir -p log
+	@coredns -conf conf/$*.conf > log/$*.log &
+test: primary-test secondary-test
+%-test:
+	@printf "\n%s\n\n" $@ && dig -f tests/$@.dig
 watch:
-	@tail -f $(LOG)
+	@tail -f log/*
 clean:
 	@-killall coredns
-	@-$(RM) $(LOG)
+	@-$(RM) log/*.log
