@@ -8,10 +8,11 @@ Let's play with [CoreDNS] demonstrated in in [Learning CoreDNS].
 ## Example
 
 Run coredns with some sample configuration files,
-e.g. [primary.conf], [secondary.conf].
+e.g. [primary.conf], [secondary.conf] and [forwarder.conf].
 
 [primary.conf]: conf/primary.conf
 [secondary.conf]: conf/secondary.conf
+[forwarder.conf]: conf/forwarder.conf
 
 ```sh
 $ git clone https://github.com/keithnoguchi/zones
@@ -86,6 +87,47 @@ foo.example.            3600    IN      AAAA    2001:db8:42:1::1
 ;; SERVER: ::1#1053(::1)
 ;; WHEN: Sat Dec 28 16:56:49 PST 2019
 ;; MSG SIZE  rcvd: 272
+```
+
+## Test
+
+`make test` will check all those three coredns servers, as in [Makefile]
+
+[makefile]: Makefile
+
+```sh
+$ make test
+
+primary-test
+
+ns1.foo.example. root.foo.example. 2019122801 3600 900 604800 600
+ns1.foo.example.
+ns2.foo.example.
+192.168.1.53
+192.168.2.53
+0 0 80 foo.example.
+0 0 443 foo.example.
+
+secondary-test
+
+ns1.foo.example. root.foo.example. 2019122801 3600 900 604800 600
+ns1.foo.example.
+ns2.foo.example.
+192.168.1.53
+192.168.2.53
+0 0 80 foo.example.
+0 0 443 foo.example.
+
+forwarder-test
+
+ns1.foo.example. root.foo.example. 2019122801 3600 900 604800 600
+ns1.foo.example.
+ns2.foo.example.
+192.168.1.53
+192.168.2.53
+0 0 80 foo.example.
+0 0 443 foo.example.
+216.58.194.174
 ```
 
 Happy Hacking!
