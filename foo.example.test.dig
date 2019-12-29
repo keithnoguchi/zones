@@ -1,0 +1,6 @@
+soa foo.example @localhost -p 1053 +short
+ns foo.example @localhost -p 1053 +short
+a ns1.foo.example @localhost -p 1053 +short
+a ns2.foo.example @localhost -p 1053 +short
+srv _http._tcp.www.foo.example. @localhost -p 1053 +short
+srv _https._tcp.www.foo.example. @localhost -p 1053 +short
