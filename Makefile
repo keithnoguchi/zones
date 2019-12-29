@@ -5,7 +5,9 @@ all: clean primary secondary forwarder test
 	@coredns -conf conf/$*.conf > log/$*.log &
 test: primary-test secondary-test forwarder-test
 %-test:
-	@printf "\n%s\n\n" $@ && dig -f tests/$@.dig
+	@printf "\n%s\n\n" $@ && dig +short @localhost -f tests/$@.dig
+%-test-verbose:
+	@printf "\n%s\n\n" $@ && dig @localhost -f tests/$*-test.dig
 watch:
 	@tail -f log/*
 clean:

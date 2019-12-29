@@ -1,7 +1,12 @@
-soa foo.example @localhost -p 1055 +short
-ns foo.example @localhost -p 1055 +short
-a ns1.foo.example @localhost -p 1055 +short
-a ns2.foo.example @localhost -p 1055 +short
-srv _http._tcp.www.foo.example. @localhost -p 1055 +short
-srv _https._tcp.www.foo.example. @localhost -p 1055 +short
-a google.com @localhost -p 1055 +short
+foo.example soa -p 1055
+foo.example ns -p 1055
+ns1.foo.example a -p 1055
+ns2.foo.example a -p 1055
+_http._tcp.www.foo.example srv -p 1055
+_https._tcp.www.foo.example srv -p 1055
+google.com a -p 1055
+google.com aaaa -p 1055
+amazon.com a -p 1055
+amazon.com aaaa -p 1055
+facebook.com a -p 1055
+facebook.com aaaa -p 1055
